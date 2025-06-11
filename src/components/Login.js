@@ -7,13 +7,7 @@ import SignButton from "./SignButton";
 
 const Login = ()=> {
     const [isVisible, setIsVisible] = useState(false);
-
-    const toggleIcon = (event)=> {
-        event.preventDefault();
-        if(isVisible) setIsVisible(false);
-        else setIsVisible(true);
-    }
-
+    
     const forgotPassHandler = (event)=> {
         event.preventDefault();
     }

@@ -37,12 +37,12 @@ const SignUp = ()=> {
                     <div className="flex gap-x-4 text-white mt-6">
                         <div>
                             <p className="text-white text-sm">First Name</p>
-                            <input type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full"></input>
+                            <input type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter First Name"></input>
                         </div>
 
                         <div>
                             <p className="text-white text-sm">Last Name</p>
-                            <input type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full"></input>
+                            <input type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter Second Name"></input>
                         </div>
                     </div>
 

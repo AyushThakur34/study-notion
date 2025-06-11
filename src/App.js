@@ -10,7 +10,7 @@ import Contact from "./components/Contact.js";
     const App = ()=> {
     return (
       <div className="bg-[#000812] w-screen h-screen relative overflow-auto">
-        <div className="w-8/12 mx-auto pt-2">
+        <div className="w-8/12 mx-auto pt-2 max-w-[1080px]">
           <Routes>
             <Route path="/" element={<MainHeader/>}>
               <Route index element={<Home/>} />
