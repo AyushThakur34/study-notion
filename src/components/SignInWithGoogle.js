@@ -7,7 +7,7 @@ const SignInWithGoogle = ()=> {
 
     return (
         <div>
-            <button className="mt-8 w-full border-2 border-[#172029] p-1 text-white text-sm font-semibold flex items-center justify-center gap-2"
+            <button className="w-full border-2 border-[#172029] p-1 text-white text-sm font-semibold flex items-center justify-center gap-2"
             onClick={signinGoogleHandler}>
                 <img src={Google} className="w-5 h-auto"></img>
                 <p>Sign in with Google</p>
