@@ -7,7 +7,8 @@ import SignButton from "./SignButton";
 
 const SignUp = ()=> {
     const [formData, setFormData] = useState({
-        fistName: "",
+        currUser: "student",
+        firstName: "",
         lastName: "",
         email: "",
         createPassword: "",
@@ -31,8 +32,14 @@ const SignUp = ()=> {
     const handleUserState = (event)=> {
         event.preventDefault();
         if(event.target.value != user) {
-                if(user === "student") setUser("instructor");
-                else setUser("student");
+            if(user === "student") setUser("instructor");
+            else setUser("student");
+            setFormData(prevFormData => {
+                return {
+                    ...prevFormData,
+                    [event.target.name] : event.target.value
+                }
+            })
         }
     }
     
@@ -46,9 +53,9 @@ const SignUp = ()=> {
                     <div className="text-white gap-x-1 flex mt-4 font-semibold
                     rounded-xl w-fit p-1 bg-[#151d25]">
                         <button className={`rounded-xl py-1 px-4 ${user === "student" ? `bg-[#000812]` : `bg-inherit`}`}
-                        value={"student"} onClick={handleUserState}>Student</button>
+                        value={"student"} onClick={handleUserState} onChange={changeHandler} name="currUser">Student</button>
                         <button className={`rounded-xl py-1 px-4 ${user === "instructor" ? `bg-[#000812]` : `bg-inherit`}`}
-                        value={"instructor"} onClick={handleUserState}>Instructor</button>
+                        value={"instructor"} name="currUser" onClick={handleUserState}>Instructor</button>
                     </div>
 
                     
@@ -60,7 +67,7 @@ const SignUp = ()=> {
 
                         <div>
                             <p className="text-white text-sm">Last Name</p>
-                            <input onChange={changeHandler} name="secondName" type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter Second Name"></input>
+                            <input onChange={changeHandler} name="lastName" type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter Second Name"></input>
                         </div>
                     </div>
 
@@ -70,8 +77,8 @@ const SignUp = ()=> {
                     </div>
 
                     <div className="flex gap-x-4">
-                        <Password heading={"Create Password"} value={"Enter Password"} name={"createPassword"} setFormData={setFormData}/>
-                        <Password heading={"Confirm Password"} value={"Enter Password"} name={"confirmPassword"} setFormData={setFormData}/>
+                        <Password heading={"Create Password"} value={"Enter Password"} name={"createPassword"} changeHandler={changeHandler}/>
+                        <Password heading={"Confirm Password"} value={"Enter Password"} name={"confirmPassword"} changeHandler={changeHandler}/>
                     </div>
                 </form>
 

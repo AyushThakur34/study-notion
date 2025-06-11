@@ -41,7 +41,7 @@ const Login = ()=> {
                     </div>
 
                     <div className="flex flex-col">
-                        <Password heading={"Password"} value={"Enter Password"} setFormData={setFormData} name={"password"}/>
+                        <Password heading={"Password"} value={"Enter Password"} setFormData={setFormData} name={"password"} changeHandler={changeHandler}/>
                         <button className="text-[#4092ab] text-xs place-self-end" onClick={forgotPassHandler}>Forgot Password</button>
                     </div>
 
