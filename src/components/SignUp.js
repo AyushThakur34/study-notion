@@ -6,9 +6,27 @@ import Password from "./Password";
 import SignButton from "./SignButton";
 
 const SignUp = ()=> {
+    const [formData, setFormData] = useState({
+        fistName: "",
+        lastName: "",
+        email: "",
+        createPassword: "",
+        confirmPassword: ""
+    });
 
     const [user, setUser] = useState("student");
     const mainHeading = "Join the millions learning to code with StudyNotion for free";
+
+    const changeHandler = (event)=> {
+        const {name, value} = event.target;
+        setFormData(prevFormData =>{
+            return {
+                ...prevFormData,
+                [name] : value
+            }
+        })
+        console.log(value);
+    };
 
     const handleUserState = (event)=> {
         event.preventDefault();
@@ -37,27 +55,27 @@ const SignUp = ()=> {
                     <div className="flex gap-x-4 text-white mt-6">
                         <div>
                             <p className="text-white text-sm">First Name</p>
-                            <input type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter First Name"></input>
+                            <input onChange={changeHandler} name="firstName" type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter First Name"></input>
                         </div>
 
                         <div>
                             <p className="text-white text-sm">Last Name</p>
-                            <input type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter Second Name"></input>
+                            <input onChange={changeHandler} name="secondName" type="text" required className="bg-[#151d25] rounded-md p-2 m-1 w-full" placeholder="Enter Second Name"></input>
                         </div>
                     </div>
 
                     <div className="text-white mt-2">
                         <p className="text-sm">Email Address</p>
-                        <input type="email" placeholder="Enter email address" required className="bg-[#151d25] rounded-md p-2 m-1 w-full"></input>
+                        <input onChange={changeHandler} name="email" type="email" placeholder="Enter email address" required className="bg-[#151d25] rounded-md p-2 m-1 w-full"></input>
                     </div>
 
                     <div className="flex gap-x-4">
-                        <Password heading={"Create Password"} value={"Enter Password"}/>
-                        <Password heading={"Confirm Password"} value={"Enter Password"}/>
+                        <Password heading={"Create Password"} value={"Enter Password"} name={"createPassword"} setFormData={setFormData}/>
+                        <Password heading={"Confirm Password"} value={"Enter Password"} name={"confirmPassword"} setFormData={setFormData}/>
                     </div>
                 </form>
 
-                <SignButton heading={"Sign Up"}/>;
+                <SignButton heading={"Sign Up"} formData={formData} setFormData={setFormData}/>;
                 <SignInWithGoogle/>
             </div>
 
