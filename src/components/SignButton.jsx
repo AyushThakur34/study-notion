@@ -1,10 +1,21 @@
+import { useNavigate } from "react-router-dom";
+
 const SignButton = (props)=> {
     let heading = props.heading;
     let formData = props.formData;
+    const navigate = useNavigate();
+    let formRef = props.formRef;
 
     const submitButtonHandler = (event) => {
-        event.preventDefault();
         console.log(formData);
+        
+        if (formRef.current && formRef.current.reportValidity()) {
+            if (heading === "Sign In") {
+                navigate("/dashboard", { state: { loggedIn: true } });
+            } else if (heading === "Sign Up") {
+                navigate("/login", { state: { accountCreated: true } });
+      }
+    }
     }
 
     return (

@@ -6,6 +6,8 @@ import Login from "./components/Login.js";
 import PageNotFound from "./components/PageNotFound.js";
 import SignUp from "./components/SignUp.js";  
 import Contact from "./components/Contact.js";
+import Dashboard from "./components/Dashboard.jsx";
+import { ToastContainer } from "react-toastify";
 
     const App = ()=> {
     return (
@@ -20,8 +22,10 @@ import Contact from "./components/Contact.js";
               <Route path="signup" element={<SignUp/>}/>
             </Route>
             <Route path="*" element={<PageNotFound/>}/>
+            <Route path="dashboard" element={<Dashboard/>}/>
           </Routes>
         </div>
+            <ToastContainer/>
       </div>
     );
   }

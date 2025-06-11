@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SignInWithGoogle from "./SignInWithGoogle";
 import LandingPageImage from "./LandingPageImage";
 import LandingPageHeading from "./LandingPageHeading";
@@ -6,6 +6,8 @@ import Password from "./Password";
 import SignButton from "./SignButton";
 
 const SignUp = ()=> {
+    const formRef = useRef();
+
     const [formData, setFormData] = useState({
         currUser: "student",
         firstName: "",
@@ -48,7 +50,7 @@ const SignUp = ()=> {
             <div className="w-[35%]">
                 <LandingPageHeading heading={mainHeading} size={"2xl"}/>
 
-                <form>
+                <form ref={formRef}>
                     {/* user */}
                     <div className="text-white gap-x-1 flex mt-4 font-semibold
                     rounded-xl w-fit p-1 bg-[#151d25]">
@@ -82,7 +84,7 @@ const SignUp = ()=> {
                     </div>
                 </form>
 
-                <SignButton heading={"Sign Up"} formData={formData} setFormData={setFormData}/>;
+                <SignButton heading={"Sign Up"} formData={formData} setFormData={setFormData} formRef={formRef}/>;
                 <SignInWithGoogle/>
             </div>
 
